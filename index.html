@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrakill Intro</title>
+</head>
+<style>
+    @font-face {
+        font-family: VCR_OSD_MONO;
+        src: url(VCR_OSD_MONO_1.001.ttf);
+    }
+    body{
+        background-color: black;
+        padding-left: 33em;
+        padding-top: 16.5em;
+    }
+    pre {
+        margin: 2px;
+        font-family: VCR_OSD_MONO;
+        font-size: 200%;
+        color: #fdfdfde1;
+    }
+    p {
+        margin: 2px;
+        font-family: VCR_OSD_MONO;
+        font-size: 200%;
+        color: #fdfdfde1;
+    }
+    .helltext {
+        color: #f00101;
+    }
+    #time {
+        position: fixed;
+        padding-top: 7.1%;
+        padding-left: 24.3%;
+    }
+</style>
+<body>
+    <p id="time"></p>
+    <p>STATUS UPDATE:</p>
+    <br>
+    <br>
+    <pre>MACHINE ID:              V1</pre>
+    <pre>LOCATION:                APPROACHING HELL</pre>
+    <pre>TIME:</pre>
+    <pre>CURRENT OBJECTIVE:       FIND A WEAPON</pre>
+    <br>
+    <br>
+    <p class="helltext">MANKIND IS DEAD.</p>
+    <p class="helltext">BLOOD IS FUEL.</p>
+    <p class="helltext">HELL IS FULL.</p>
+    <audio autoplay loop>
+        <source src="Ultrakill ost The Fire Is Gone.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function currentTime() {
+            let date = new Date(); 
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let session = "AM";
+
+            if(hh == 0){
+                hh = 12;
+            }
+            if(hh > 12){
+                hh = hh - 12;
+                session = "PM";
+            }
+
+            hh = (hh < 10) ? "0" + hh : hh;
+            mm = (mm < 10) ? "0" + mm : mm;
+            ss = (ss < 10) ? "0" + ss : ss;
+                
+            let time = hh + ":" + mm + ":" + ss + " " + session;
+
+            document.getElementById("time").innerText = time; 
+            let t = setTimeout(function(){ currentTime() }, 1000);
+}
+currentTime();
+    </script>
+</body>
+</html>
